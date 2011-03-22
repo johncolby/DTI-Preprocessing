@@ -1,26 +1,24 @@
-% Trio_DTI_lists.m - Make Pipeline lists for Trio 30 direction DTI data
+% Make_DTI_lists.m - Setup Pipeline lists for DTI preprocessing workflow
 %
 % For a given experiment directory, this script checks to see how many DTI
 % scan repetitions are present, and generates the appropriate input lists
-% for the Trio_DTI.pipe workflow in the .../exptDir/PIPELINE directory.
+% for the DTI_preprocessing.pipe workflow in the .../exptDir/PIPELINE directory.
 %
-% Copy the contents of inpt.list to the 'Input raw data' Pipeline data source.
 % Set Pipeline variable 'exptDir' to the same as below. Then run the workflow.
 %
 % Notes:
 % 1. To run script from command line: matlab -nodisplay < Trio_DTI_lists.m
-% 2. To clear out a whole area, do something like: rm SUBJECTS/*/STRUCTURALS/dtifit/*
-% 3. Change 'SUBJECTS' to 'TEST' at line 44 to use the test area
+% 2. To clear out a whole area, do something like: rm SUBJECTS/*/1avg/dtifit/*
+% 3. Change 'SUBJECTS' to 'TEST' at line 44 to use a test area
 
 % Author: John Colby (johncolby@ucla.edu)
-% Date:   1/29/10
 
 %% Setup
 clear all
 
-exptDir = '/ifs/edevel/TRIO/DATA_ANALYSES/JC_DTI30/'; % Set experiment directory
-analysisName = '2avg';
-nScans = 2;
+exptDir = '/path/to/exptDir/'; % Set experiment directory
+analysisName = '2avg';         % Set the name of the output folder
+nScans = 2;                    % Choose the # of scans to average
 
 D       = dir(fullfile(exptDir, 'SUBJECTS/20*'));     % Fetch subject list automatically
 subIDs  = str2num(vertcat(D.name));
@@ -44,7 +42,7 @@ fa   = fopen(fullfile(exptDir, 'PIPELINE', 'fa.list'),'wt');
 for i=1:length(subIDs) % Loop over subject ID
     subStr = num2str(subIDs(i));
     
-    % Change 'SUBJECTS' to 'TEST' to use the test area
+    % Change 'SUBJECTS' to 'TEST' to use a test area
     subDir = fullfile(exptDir, 'SUBJECTS', subStr);
     analysisDir = fullfile(subDir, analysisName);
     
@@ -56,12 +54,11 @@ for i=1:length(subIDs) % Loop over subject ID
         if ~isdir(fullfile(analysisDir, 'dtifit')), mkdir(fullfile(analysisDir, 'dtifit')); end
         if ~isdir(fullfile(analysisDir, 'track')), mkdir(fullfile(analysisDir, 'track')); end
         if ~isdir(fullfile(analysisDir, 'diffusion_toolkit')), mkdir(fullfile(analysisDir, 'diffusion_toolkit')); end
-        %if ~isdir(fullfile(analysisDir, 'trackvis')), mkdir(fullfile(subDir, 'trackvis')); end
         
         % Only do tensor fitting for subjects who don't have it already
         if isempty(dir(fullfile(analysisDir, 'dtifit/dti*'))) || isempty(dir(fullfile(analysisDir, 'diffusion_toolkit/dti*')))
-            %fprintf(inpt, sprintf('%s\n', fullfile(subDir, '*30DIR*.nii.gz')));
-            fprintf(inpt, sprintf('`ls %s | head -%d`\n', fullfile(subDir, 'RAW', '*30DIR*.nii.gz'), nScans));
+            [tmp files] = unix(sprintf('echo `ls %s | head -%d`', fullfile(subDir, '*_DTI_*.nii.gz'), nScans));
+            fprintf(inpt, sprintf('%s', files));
             fprintf(dti,  sprintf('%s\n', fullfile(analysisDir, 'dtifit')));
             fprintf(data, sprintf('%s\n', fullfile(analysisDir, 'track/data.nii.gz')));
             fprintf(bet,  sprintf('%s\n', fullfile(analysisDir, 'track/nodif_brain.nii.gz')));
@@ -71,6 +68,7 @@ for i=1:length(subIDs) % Loop over subject ID
             fprintf(dtk,  sprintf('%s\n', fullfile(analysisDir, 'diffusion_toolkit', 'dti')));
             fprintf(dtk2, sprintf('%s\n', fullfile(analysisDir, 'diffusion_toolkit', 'dti.trk')));
             fprintf(fa,   sprintf('%s\n', fullfile(analysisDir, 'diffusion_toolkit', 'dti_fa.nii.gz')));
+            
             % Make links to the correct bvals/bvecs in the track folder
             if ~exist(fullfile(analysisDir, 'track/bvals'), 'file')
                 unix(sprintf('ln -s %s %s', fullfile(exptDir, 'PIPELINE/grad', sprintf('bvals%d', nScans)), ...

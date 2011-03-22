@@ -1,40 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <pipeline version=".1">
         <connections>
-                <connection source="FSLMergenii.gz_0.OutputFile" sink="eddy_correct_0.Inputdiffusiondata" />
-                <connection source="eddy_correct_0.Outputname" sink="BETnii.gz_0.InputFile" />
-                <connection source="bvecs_0.Output" sink="dtifit_0.bvecs" />
-                <connection source="bvals_0.Output" sink="dtifit_0.bvals" />
-                <connection source="eddy_correct_0.Outputname" sink="dtifit_0.Inputdata" />
-                <connection source="Outputbasename_0.Output" sink="dtifit_0.Outputbasename" />
-                <connection source="BETnii.gz_0.CreateBinaryMask" sink="dtifit_0.Nodifbrainmask" />
-                <connection source="BETnii.gz_0.CreateBinaryMask" sink="nodif_brain_mask_0.Input" />
-                <connection source="eddy_correct_0.Outputname" sink="eddy_correctoutput_0.Input" />
-                <connection source="BETnii.gz_0.OutputFile" sink="nodif_brain_0.Input" />
-                <connection source="dti_tracker_0.OUTPUT_FILE" sink="spline_filter_0.INPUT_TRACK_FILE" />
-                <connection source="dti_recon_0.Flowcontrol" sink="dti_tracker_0.Flowcontrol" />
-                <connection source="eddy_correct_0.Outputname" sink="dti_recon_0.Input" />
-                <connection source="spline_filter_0.OUTPUT_TRACK_FILE" sink=".trkoutput_0.Input" />
+                <connection source="fslmerge_1.OutputFile" sink="eddy_correct_1.Inputdiffusiondata" />
+                <connection source="eddy_correct_1.Outputname" sink="bet_1.InputFile" />
+                <connection source="bvecs_1.Output" sink="dtifit_1.bvecs" />
+                <connection source="bvals_1.Output" sink="dtifit_1.bvals" />
+                <connection source="eddy_correct_1.Outputname" sink="dtifit_1.Inputdata" />
+                <connection source="Outputbasename_1.Output" sink="dtifit_1.Outputbasename" />
+                <connection source="bet_1.CreateBinaryMask" sink="dtifit_1.Nodifbrainmask" />
+                <connection source="bet_1.CreateBinaryMask" sink="nodif_brain_mask_1.Input" />
+                <connection source="eddy_correct_1.Outputname" sink="eddy_correctoutput_1.Input" />
+                <connection source="bet_1.OutputFile" sink="nodif_brain_1.Input" />
+                <connection source="dti_tracker_1.OUTPUT_FILE" sink="spline_filter_1.INPUT_TRACK_FILE" />
+                <connection source="dti_recon_1.Flowcontrol" sink="dti_tracker_1.Flowcontrol" />
+                <connection source="eddy_correct_1.Outputname" sink="dti_recon_1.Input" />
+                <connection source="spline_filter_1.OUTPUT_TRACK_FILE" sink=".trkoutput_1.Input" />
         </connections>
-        <moduleGroup id="Trio_DTI_trackvis_0" name="Trio_DTI_trackvis" posX="0" posY="0" needsProvenance="true">
-                <module id="eddy_correct_0" name="eddy_correct" package="FSL" location="pipeline://cranium.loni.ucla.edu//ifshome/jcolby/bin/wrappers/eddy_correct.sh" sourceCode="" posX="356" posY="177">
+        <moduleGroup id="Trio_DTI_trackvis_1" name="Trio_DTI_trackvis" posX="0" posY="0" needsProvenance="true">
+                <module id="eddy_correct_1" name="eddy_correct" package="FSL" location="pipeline://cranium.loni.ucla.edu//path/to/wrappers/eddy_correct.sh" sourceCode="" icon="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&#xA;RX//2Q==" posX="356" posY="177">
+                        <tag />
                         <metadata>
                                 <data key="__creationDateKey" value="Thu Jul 10 18:11:32 PDT 2008" />
                         </metadata>
-                        <input id="eddy_correct_0.Inputdiffusiondata" name="Input diffusion data" required="true" enabled="true" order="0">
+                        <input id="eddy_correct_1.Inputdiffusiondata" name="Input diffusion data" required="true" enabled="true" order="0">
                                 <format type="File" cardinality="1">
                                         <fileTypes>
                                                 <filetype name="Nii Gz" extension="nii.gz" description="Compressed Nifti" />
                                         </fileTypes>
                                 </format>
                         </input>
-                        <input id="eddy_correct_0.Referencenumber" name="Reference number" required="false" enabled="true" order="2">
+                        <input id="eddy_correct_1.Referencenumber" name="Reference number" required="false" enabled="true" order="2">
                                 <format type="Number" cardinality="1" />
                                 <values>
                                         <value>0</value>
                                 </values>
                         </input>
-                        <output id="eddy_correct_0.Outputname" name="Output name" required="true" enabled="true" order="1" switch=" " switchSpaced="false">
+                        <output id="eddy_correct_1.Outputname" name="Output name" required="true" enabled="true" order="1" switch=" " switchSpaced="false">
                                 <format type="File" cardinality="1">
                                         <fileTypes>
                                                 <filetype name="Nii Gz" extension="nii.gz" description="Compressed Nifti" />
@@ -42,7 +43,7 @@
                                 </format>
                         </output>
                 </module>
-                <module id="BETnii.gz_0" name="BET (nii.gz)" package="FSL" version="4.0.1" description="BET (Brain Extraction Tool) deletes non-brain tissue from an image of the whole head. It can also estimate the external skull surface." location="pipeline://cranium.loni.ucla.edu//ifshome/jcolby/bin/wrappers/bet.sh" sourceCode="" icon="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&#xA;X2RPsrl0AAAAAElFTkSuQmCC" posX="404" posY="344">
+                <module id="bet_1" name="bet" package="FSL" version="4.0.1" description="BET (Brain Extraction Tool) deletes non-brain tissue from an image of the whole head. It can also estimate the external skull surface." location="pipeline://cranium.loni.ucla.edu//path/to/wrappers/bet.sh" sourceCode="" icon="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&#xA;RX//2Q==" posX="404" posY="344">
                         <authors>
                                 <author fullName="D. Cornelius Hojatkashani" email="" website="" />
                         </authors>
@@ -55,24 +56,24 @@
                         <metadata>
                                 <data key="__creationDateKey" value="Mon Sep 18 19:22:04 PDT 2006" />
                         </metadata>
-                        <input id="BETnii.gz_0.InputFile" name="Input File" description="Specifies the input file." required="true" enabled="true" order="0">
+                        <input id="bet_1.InputFile" name="Input File" description="Specifies the input file." required="true" enabled="true" order="0">
                                 <format type="File" cardinality="1">
                                         <fileTypes>
                                                 <filetype name="Nii Gz" extension="nii.gz" description="Compressed Nifti" />
                                         </fileTypes>
                                 </format>
                         </input>
-                        <output id="BETnii.gz_0.OutputFile" name="Output File" description="Specifies the output file." required="true" enabled="true" order="1">
+                        <output id="bet_1.OutputFile" name="Output File" description="Specifies the output file." required="true" enabled="true" order="1">
                                 <format type="File" cardinality="1">
                                         <fileTypes>
                                                 <filetype name="Nii Gz" extension="nii.gz" description="Compressed Nifti" />
                                         </fileTypes>
                                 </format>
                         </output>
-                        <input id="BETnii.gz_0.OutlineBrainsurface" name="Outline Brainsurface" description="Generates brain surface outline overlaid onto original image." required="false" enabled="false" order="2" switch="-o" switchSpaced="true">
+                        <input id="bet_1.OutlineBrainsurface" name="Outline Brainsurface" description="Generates brain surface outline overlaid onto original image." required="false" enabled="false" order="2" switch="-o" switchSpaced="true">
                                 <format type="String" cardinality="0" />
                         </input>
-                        <output id="BETnii.gz_0.CreateBinaryMask" name="Create Binary Mask" description="Generates binary brain mask." required="false" enabled="true" order="3" switch="-m " switchSpaced="true">
+                        <output id="bet_1.CreateBinaryMask" name="Create Binary Mask" description="Generates binary brain mask." required="false" enabled="true" order="3" switch="-m " switchSpaced="true">
                                 <format type="File" cardinality="1" base="Output File">
                                         <fileTypes>
                                                 <filetype name="Nii Gz" extension="nii.gz" description="Compressed Nifti" />
@@ -83,7 +84,7 @@
                                         <transform order="3" operation="Append">_mask.nii.gz</transform>
                                 </format>
                         </output>
-                        <output id="BETnii.gz_0.GenerateSkullImage" name="Generate Skull Image" description="Generates approximate skull image." required="false" enabled="false" order="4" switch="-s" switchSpaced="true">
+                        <output id="bet_1.GenerateSkullImage" name="Generate Skull Image" description="Generates approximate skull image." required="false" enabled="false" order="4" switch="-s" switchSpaced="true">
                                 <format type="File" cardinality="1" base="Output File">
                                         <fileTypes>
                                                 <filetype name="Nii Gz" extension="nii.gz" description="Compressed Nifti" />
@@ -93,69 +94,70 @@
                                         <transform order="2" operation="Append">_skull.nii.gz</transform>
                                 </format>
                         </output>
-                        <input id="BETnii.gz_0.DontSegmentOutput" name="Don't Segment Output" description="Don't generate segmented brain image output." required="false" enabled="false" order="5" switch="-n" switchSpaced="true">
+                        <input id="bet_1.DontSegmentOutput" name="Don't Segment Output" description="Don't generate segmented brain image output." required="false" enabled="false" order="5" switch="-n" switchSpaced="true">
                                 <format type="String" cardinality="0" />
                         </input>
-                        <input id="BETnii.gz_0.FractionalIntensityThreshold" name="Fractional Intensity Threshold" description="Specifies fractional intensity threshold (0-&gt;1); default=0.5; smaller values give larger brain outline estimates" required="false" enabled="true" order="6" switch="-f" switchSpaced="true">
+                        <input id="bet_1.FractionalIntensityThreshold" name="Fractional Intensity Threshold" description="Specifies fractional intensity threshold (0-&gt;1); default=0.5; smaller values give larger brain outline estimates" required="false" enabled="true" order="6" switch="-f" switchSpaced="true">
                                 <format type="Number" cardinality="1" />
                                 <values>
                                         <value>0.4</value>
                                 </values>
                         </input>
-                        <input id="BETnii.gz_0.VerticalGradientThreshold" name="Vertical Gradient Threshold" description="Specifies vertical gradient in fractional intensity threshold (-1-&gt;1). &#xA;(Default=0)&#xA;Note: Positive values give larger brain outline at bottom, smaller at top." required="false" enabled="false" order="7" switch="-g" switchSpaced="true">
+                        <input id="bet_1.VerticalGradientThreshold" name="Vertical Gradient Threshold" description="Specifies vertical gradient in fractional intensity threshold (-1-&gt;1). &#xA;(Default=0)&#xA;Note: Positive values give larger brain outline at bottom, smaller at top." required="false" enabled="false" order="7" switch="-g" switchSpaced="true">
                                 <format type="Number" cardinality="1" />
                         </input>
-                        <input id="BETnii.gz_0.HeadRadius" name="Head Radius" description="Specifies head radius (mm not voxels)&#xA;Note: Initial surface sphere is set to half of this." required="false" enabled="false" order="9" switch="-r" switchSpaced="true">
+                        <input id="bet_1.HeadRadius" name="Head Radius" description="Specifies head radius (mm not voxels)&#xA;Note: Initial surface sphere is set to half of this." required="false" enabled="false" order="9" switch="-r" switchSpaced="true">
                                 <format type="Number" cardinality="1" />
                         </input>
-                        <input id="BETnii.gz_0.CenterofGravity" name="Center of Gravity" description="Specifies center-of-gravity (mm not voxels) of initial mesh surface." required="false" enabled="false" order="10" switch="-c" switchSpaced="true">
+                        <input id="bet_1.CenterofGravity" name="Center of Gravity" description="Specifies center-of-gravity (mm not voxels) of initial mesh surface." required="false" enabled="false" order="10" switch="-c" switchSpaced="true">
                                 <format type="Number" cardinality="3" />
                         </input>
-                        <input id="BETnii.gz_0.ApplyThresholding" name="Apply Thresholding" description="Apply thresholding to segmented brain image and mask." required="false" enabled="false" order="11" switch="-t" switchSpaced="true">
+                        <input id="bet_1.ApplyThresholding" name="Apply Thresholding" description="Apply thresholding to segmented brain image and mask." required="false" enabled="false" order="11" switch="-t" switchSpaced="true">
                                 <format type="String" cardinality="0" />
                         </input>
-                        <input id="BETnii.gz_0.Verbose" name="Verbose" description="Enables verbose text output." required="false" enabled="false" order="8" switch="-v" switchSpaced="true">
+                        <input id="bet_1.Verbose" name="Verbose" description="Enables verbose text output." required="false" enabled="false" order="8" switch="-v" switchSpaced="true">
                                 <format type="String" cardinality="0" />
                         </input>
                 </module>
-                <module id="dtifit_0" name="dtifit" package="FSL" location="pipeline://cranium.loni.ucla.edu//ifshome/jcolby/bin/wrappers/dtifit.sh" sourceCode="" posX="206" posY="620" advancedOptions="h_vmem=2">
+                <module id="dtifit_1" name="dtifit" package="FSL" location="pipeline://cranium.loni.ucla.edu//path/to/wrappers/dtifit.sh" sourceCode="" icon="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&#xA;RX//2Q==" posX="206" posY="620">
+                        <tag />
                         <metadata>
                                 <data key="__creationDateKey" value="Sat Oct 18 18:31:52 PDT 2008" />
                         </metadata>
-                        <input id="dtifit_0.bvecs" name="bvecs" required="true" enabled="true" order="0" switch="--bvecs=" switchSpaced="false">
+                        <input id="dtifit_1.bvecs" name="bvecs" required="true" enabled="true" order="0" switch="--bvecs=" switchSpaced="false">
                                 <format type="File" cardinality="1">
                                         <fileTypes>
                                                 <filetype name="File" extension="" description="Any type of data file" />
                                         </fileTypes>
                                 </format>
                         </input>
-                        <input id="dtifit_0.bvals" name="bvals" required="true" enabled="true" order="1" switch="--bvals=" switchSpaced="false">
+                        <input id="dtifit_1.bvals" name="bvals" required="true" enabled="true" order="1" switch="--bvals=" switchSpaced="false">
                                 <format type="File" cardinality="1">
                                         <fileTypes>
                                                 <filetype name="File" extension="" description="Any type of data file" />
                                         </fileTypes>
                                 </format>
                         </input>
-                        <input id="dtifit_0.Inputdata" name="Input data" required="true" enabled="true" order="2" switch="--data=" switchSpaced="false">
+                        <input id="dtifit_1.Inputdata" name="Input data" required="true" enabled="true" order="2" switch="--data=" switchSpaced="false">
                                 <format type="File" cardinality="1">
                                         <fileTypes>
                                                 <filetype name="Nii Gz" extension="nii.gz" description="Compressed Nifti" />
                                         </fileTypes>
                                 </format>
                         </input>
-                        <input id="dtifit_0.Outputbasename" name="Output basename" required="true" enabled="true" order="3" switch="--out=" switchSpaced="false">
+                        <input id="dtifit_1.Outputbasename" name="Output basename" required="true" enabled="true" order="3" switch="--out=" switchSpaced="false">
                                 <format type="Directory" cardinality="1">
                                         <transform order="0" operation="Append">/dti</transform>
                                 </format>
                         </input>
-                        <input id="dtifit_0.Nodifbrainmask" name="Nodif brain mask" required="true" enabled="true" order="4" switch="--mask=" switchSpaced="false">
+                        <input id="dtifit_1.Nodifbrainmask" name="Nodif brain mask" required="true" enabled="true" order="4" switch="--mask=" switchSpaced="false">
                                 <format type="File" cardinality="1">
                                         <fileTypes>
                                                 <filetype name="Nii Gz" extension="nii.gz" description="Compressed Nifti" />
                                         </fileTypes>
                                 </format>
                         </input>
-                        <output id="dtifit_0.FAmap" name="FA map" required="false" enabled="false" order="5">
+                        <output id="dtifit_1.FAmap" name="FA map" required="false" enabled="false" order="5">
                                 <format type="File" cardinality="1" base="Output basename">
                                         <fileTypes>
                                                 <filetype name="Nii Gz" extension="nii.gz" description="Compressed Nifti" />
@@ -164,18 +166,18 @@
                                 </format>
                         </output>
                 </module>
-                <dataModule id="Outputbasename_0" name="Output basename" posX="0" posY="358" rotation="1" type="Directory" source="true" loopIndex="false">
+                <dataModule id="Outputbasename_1" name="Output basename" posX="0" posY="358" rotation="1" type="Directory" source="true" loopIndex="false">
                         <metadata>
                                 <data key="__creationDateKey" value="Fri Aug 08 11:59:03 PDT 2008" />
                         </metadata>
                         <values>
                                 <value>pipeline://cranium.loni.ucla.edu/{exptDir}/PIPELINE/dti.list</value>
                         </values>
-                        <output id="Outputbasename_0.Output" name="Output" required="true" enabled="true" order="-1">
+                        <output id="Outputbasename_1.Output" name="Output" required="true" enabled="true" order="-1">
                                 <format type="Directory" cardinality="1" />
                         </output>
                 </dataModule>
-                <dataModule id="nodif_brain_mask_0" name="nodif_brain_mask" posX="671" posY="406" rotation="1" type="File" source="false" loopIndex="false" dirDump="false">
+                <dataModule id="nodif_brain_mask_1" name="nodif_brain_mask" posX="671" posY="406" rotation="1" type="File" source="false" loopIndex="false" dirDump="false">
                         <fileTypes>
                                 <filetype name="Nii Gz" extension="nii.gz" description="Compressed Nifti" />
                         </fileTypes>
@@ -185,7 +187,7 @@
                         <values>
                                 <value>pipeline://cranium.loni.ucla.edu/{exptDir}/PIPELINE/mask.list</value>
                         </values>
-                        <input id="nodif_brain_mask_0.Input" name="Input" required="true" enabled="true" order="-1">
+                        <input id="nodif_brain_mask_1.Input" name="Input" required="true" enabled="true" order="-1">
                                 <format type="File" cardinality="1">
                                         <fileTypes>
                                                 <filetype name="Nii Gz" extension="nii.gz" description="Compressed Nifti" />
@@ -193,7 +195,7 @@
                                 </format>
                         </input>
                 </dataModule>
-                <dataModule id="eddy_correctoutput_0" name="eddy_correct output" posX="673" posY="252" rotation="1" type="File" source="false" loopIndex="false" dirDump="false">
+                <dataModule id="eddy_correctoutput_1" name="eddy_correct output" posX="673" posY="252" rotation="1" type="File" source="false" loopIndex="false" dirDump="false">
                         <fileTypes>
                                 <filetype name="Nii Gz" extension="nii.gz" description="Compressed Nifti" />
                         </fileTypes>
@@ -203,7 +205,7 @@
                         <values>
                                 <value>pipeline://cranium.loni.ucla.edu/{exptDir}/PIPELINE/data.list</value>
                         </values>
-                        <input id="eddy_correctoutput_0.Input" name="Input" required="true" enabled="true" order="-1">
+                        <input id="eddy_correctoutput_1.Input" name="Input" required="true" enabled="true" order="-1">
                                 <format type="File" cardinality="1">
                                         <fileTypes>
                                                 <filetype name="Nii Gz" extension="nii.gz" description="Compressed Nifti" />
@@ -211,7 +213,7 @@
                                 </format>
                         </input>
                 </dataModule>
-                <dataModule id="nodif_brain_0" name="nodif_brain" posX="545" posY="443" rotation="1" type="File" source="false" loopIndex="false" dirDump="false">
+                <dataModule id="nodif_brain_1" name="nodif_brain" posX="545" posY="443" rotation="1" type="File" source="false" loopIndex="false" dirDump="false">
                         <fileTypes>
                                 <filetype name="Nii Gz" extension="nii.gz" description="Compressed Nifti" />
                         </fileTypes>
@@ -221,7 +223,7 @@
                         <values>
                                 <value>pipeline://cranium.loni.ucla.edu/{exptDir}/PIPELINE/bet.list</value>
                         </values>
-                        <input id="nodif_brain_0.Input" name="Input" required="true" enabled="true" order="-1">
+                        <input id="nodif_brain_1.Input" name="Input" required="true" enabled="true" order="-1">
                                 <format type="File" cardinality="1">
                                         <fileTypes>
                                                 <filetype name="Nii Gz" extension="nii.gz" description="Compressed Nifti" />
@@ -229,7 +231,7 @@
                                 </format>
                         </input>
                 </dataModule>
-                <module id="FSLMergenii.gz_0" name="FSLMerge (nii.gz)" package="FSL" version="4.1.0" description="Concatenate image files into a single output. This concatenation can be in time, or in X, Y or Z. All image dimensions (except for the one being concatenated over) must be the same in all input images. For example, this can be used to take multiple 3D files (eg as output by SPM) and create a single 4D image file." location="pipeline://cranium.loni.ucla.edu//usr/local/fsl-4.1.0_64bit/bin/fslmerge.sh" sourceCode="" icon="/9j/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAx&#xA;NDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIy&#xA;MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAAUCAAyADIEASIAAhEBAxEBBCIA/8QAHwAAAQUB&#xA;AQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEG&#xA;E1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVW&#xA;V1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLD&#xA;xMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAA&#xA;AAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKR&#xA;obHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hp&#xA;anN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU&#xA;1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADgQBAAIRAxEEAAA/APn+ivb7WCyihVI7aJEWQuqJ&#xA;GgAbJ5A29ferEGgaHNHn+ybQHt/o0fP/AI7QB8/0V9Ir4X8P7R/xI9O6f8+qf4Uv/CLeH/8AoB6b&#xA;/wCAqf4V4RRXuT+HNIGSuk2mAed0EYx/47TpfDGmCAypo9lIvBGyOIdf+A07AfNtFfSX/CLeH/8A&#xA;oB6b/wCAqf4Uf8It4f8A+gHpv/gKn+FeF0V7jH4f0aYSAaPDHNGN0sMlrGGUeo+XBHuKbHpHh8uE&#xA;fSbUH/rhHz/47RYD5tor6S/4Rbw//wBAPTf/AAFT/Cj/AIRbw/8A9APTf/AVP8K8Qor3iPRtDeNW&#xA;OkaeSQD/AMe0f+FFFgPm2ivdJ9A0ZbiUDSLDAcj/AFC+v0oqs0DBBj5Sdw/U1rWd5qNjoF81rcpH&#xA;OvkAO7BVVC5DcnIBPTNQpExt1wAT82f++jVXUJJZNKktktZWkaaFsOoMbKrMTk56cjinYVzs1+4P&#xA;pS0i/cH0paINUMGsi4v7r7TGGQvL5iuEBIyDjjjP8qs6k+uo0Y1HUhLH/rEK42SLg/cxxjpx64rk&#xA;7a0sbS5cahb3Eds427o48lSf4gBjIHPFaGoz6PDov9i6XfXN4DcC4aZ4zHHEFH3UBJOW79uKkYUU&#xA;UVrXuo3j6foxNzKpNzLyrDI/drj2OM9PrV26iDSxOqYLrgrwMMOvH6/jXMJd6LfaTZWV7Pfxva3B&#xA;cCGDcXDLjGe3IrWsy9uyRKk3lqxMZuCN7A9zjpxx+FUhNhRRRWjDbnyI/wDdHb2op8Mo8iPhfuj+&#xA;VFAzmrr/AI/Jv+ujfzoouv8Aj8m/66N/OilsZo1t1aVS4wRgcHqattc6O0WDBc7ieeRjGP8AGvLF&#xA;8YaurKkY0vDqWGbgDjjr+/4PI4PPX0NVm8c6g3VLP82/+PU3JE2OkX7g+lLXiI+K/iIDGyx/78n/&#xA;AOKpf+FseI/7lj/35P8A8VXt0Gh6Reszsw+y8DDyLuORn8vf1rOl8P6D5UXlwxODkOWkC8nocDtm&#xA;vH/+E1v+yWg/Fv8A49QfGl8f4LT82/8Aj1K5R7bRXiX/AAtjxH/csf8Avyf/AIqj/hbHiP8AuWP/&#xA;AH5P/wAVXrqaR4d064aUpNJK4AAiZSqD29/r6VPfJpc9khto5hMh43EHjPGa8cTxvqMf3Ra49Nzf&#xA;/Hqlj8fapE25RaZ9y3/x6mpIWp7bRXiX/C2PEf8Acsf+/J/+Ko/4Wx4j/uWP/fk//FV6NDu8iPk/&#xA;dHb2orzOT4jatDI8Qs7AhCVBMcgPHtvopXQrHpF1/wAfk3/XRv50V5Y/xJ113ZitpknP+qP+NFcV&#xA;RRRUlHH0UUUUUUUAFFFFFFFFABRRRRRRRQAUUUV//9k=" posX="340" posY="21" executableVersion="4.1.0">
+                <module id="fslmerge_1" name="fslmerge" package="FSL" version="4.1.0" description="Concatenate image files into a single output. This concatenation can be in time, or in X, Y or Z. All image dimensions (except for the one being concatenated over) must be the same in all input images. For example, this can be used to take multiple 3D files (eg as output by SPM) and create a single 4D image file." location="pipeline://cranium.loni.ucla.edu//path/to/wrappers/fslmerge.sh" sourceCode="" icon="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&#xA;RX//2Q==" posX="340" posY="21" executableVersion="4.1.0">
                         <authors>
                                 <author fullName="Stephen Tabaquin" email="tabaquin@ucla.edu " website="http://loni.ucla.edu " />
                         </authors>
@@ -248,7 +250,7 @@ PMID: 15501092</citation>
                         <metadata>
                                 <data key="__creationDateKey" value="Tue Jul 10 17:50:22 PDT 2007" />
                         </metadata>
-                        <input id="FSLMergenii.gz_0.ConcatenationType" name="Concatenation Type" description="Specify the type of concatenation to be applied.&#xA;The following can be chosen:&#xA;-x: concatenate images in the x direction.&#xA;-y: concatenate images in the y direction.&#xA;-z: concatenate images in the z direction.&#xA;-t : concatenate images in time.&#xA;-a: auto-choose: single slices -&gt; volume, volumes -&gt; 4D (time series)" required="true" enabled="true" order="0">
+                        <input id="fslmerge_1.ConcatenationType" name="Concatenation Type" description="Specify the type of concatenation to be applied.&#xA;The following can be chosen:&#xA;-x: concatenate images in the x direction.&#xA;-y: concatenate images in the y direction.&#xA;-z: concatenate images in the z direction.&#xA;-t : concatenate images in time.&#xA;-a: auto-choose: single slices -&gt; volume, volumes -&gt; 4D (time series)" required="true" enabled="true" order="0">
                                 <format type="Enumerated" cardinality="1">
                                         <enumeration>-x</enumeration>
                                         <enumeration>-y</enumeration>
@@ -260,21 +262,21 @@ PMID: 15501092</citation>
                                         <value>-t</value>
                                 </values>
                         </input>
-                        <output id="FSLMergenii.gz_0.OutputFile" name="Output File" description="Specifies the output file path." required="true" enabled="true" order="1">
+                        <output id="fslmerge_1.OutputFile" name="Output File" description="Specifies the output file path." required="true" enabled="true" order="1">
                                 <format type="File" cardinality="1">
                                         <fileTypes>
                                                 <filetype name="Nii Gz" extension="nii.gz" description="Compressed Nifti" />
                                         </fileTypes>
                                 </format>
                         </output>
-                        <input id="FSLMergenii.gz_0.InputFiles" name="Input File(s)" description="Specifies the input file path.  An infinite number of inputs may be specified." required="true" enabled="true" order="2">
+                        <input id="fslmerge_1.InputFiles" name="Input File(s)" description="Specifies the input file path.  An infinite number of inputs may be specified." required="true" enabled="true" order="2">
                                 <format type="String" cardinality="1" />
                                 <values>
                                         <value>pipeline://cranium.loni.ucla.edu/{exptDir}/PIPELINE/inpt.list</value>
                                 </values>
                         </input>
                 </module>
-                <dataModule id="bvals_0" name="bvals" posX="2" posY="458" rotation="1" type="File" source="true" loopIndex="false">
+                <dataModule id="bvals_1" name="bvals" posX="2" posY="458" rotation="1" type="File" source="true" loopIndex="false">
                         <fileTypes>
                                 <filetype name="File" extension="" description="Any type of data file" />
                         </fileTypes>
@@ -284,7 +286,7 @@ PMID: 15501092</citation>
                         <values>
                                 <value>pipeline://cranium.loni.ucla.edu/{exptDir}/PIPELINE/bval.list</value>
                         </values>
-                        <output id="bvals_0.Output" name="Output" required="true" enabled="true" order="-1">
+                        <output id="bvals_1.Output" name="Output" required="true" enabled="true" order="-1">
                                 <format type="File" cardinality="1">
                                         <fileTypes>
                                                 <filetype name="File" extension="" description="Any type of data file" />
@@ -292,7 +294,7 @@ PMID: 15501092</citation>
                                 </format>
                         </output>
                 </dataModule>
-                <dataModule id="bvecs_0" name="bvecs" posX="1" posY="560" rotation="1" type="File" source="true" loopIndex="false">
+                <dataModule id="bvecs_1" name="bvecs" posX="1" posY="560" rotation="1" type="File" source="true" loopIndex="false">
                         <fileTypes>
                                 <filetype name="File" extension="" description="Any type of data file" />
                         </fileTypes>
@@ -302,7 +304,7 @@ PMID: 15501092</citation>
                         <values>
                                 <value>pipeline://cranium.loni.ucla.edu/{exptDir}/PIPELINE/bvec.list</value>
                         </values>
-                        <output id="bvecs_0.Output" name="Output" required="true" enabled="true" order="-1">
+                        <output id="bvecs_1.Output" name="Output" required="true" enabled="true" order="-1">
                                 <format type="File" cardinality="1">
                                         <fileTypes>
                                                 <filetype name="File" extension="" description="Any type of data file" />
@@ -310,25 +312,26 @@ PMID: 15501092</citation>
                                 </format>
                         </output>
                 </dataModule>
-                <module id="spline_filter_0" name="spline_filter" package="Diffusion Tool Kit" version="0.2.1" description="Smooth and clean up the original track file generated by dti_tracker or odf_tracker. " location="pipeline://cranium.loni.ucla.edu//usr/local/dtk-0.4.4.1_64bit/spline_filter.sh" sourceCode="" icon="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&#xA;Xr9Ff//Z" posX="487" posY="867">
+                <module id="spline_filter_1" name="spline_filter" package="Diffusion Tool Kit" version="0.2.1" description="Smooth and clean up the original track file generated by dti_tracker or odf_tracker. " location="pipeline://cranium.loni.ucla.edu//path/to/dtk/spline_filter" sourceCode="" icon="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&#xA;Xr9Ff//Z" posX="487" posY="867">
+                        <tag />
                         <uri>http://www.trackvis.org/dtk</uri>
                         <metadata>
                                 <data key="__creationDateKey" value="Mon Oct 05 14:52:12 PDT 2009" />
                         </metadata>
-                        <input id="spline_filter_0.INPUT_TRACK_FILE" name="INPUT_TRACK_FILE" description="Enter the input.trk file" required="true" enabled="true" order="0">
+                        <input id="spline_filter_1.INPUT_TRACK_FILE" name="INPUT_TRACK_FILE" description="Enter the input.trk file" required="true" enabled="true" order="0">
                                 <format type="File" cardinality="1">
                                         <fileTypes>
                                                 <filetype name="File" extension="" description="Any type of data file" />
                                         </fileTypes>
                                 </format>
                         </input>
-                        <input id="spline_filter_0.STEP_LENGTH" name="STEP_LENGTH" description="Set step length, in the unit of minimum voxel size.&#xA;Default value is 0.5 for interpolated streamline method and 0.1 for other methods." required="true" enabled="true" order="1">
+                        <input id="spline_filter_1.STEP_LENGTH" name="STEP_LENGTH" description="Set step length, in the unit of minimum voxel size.&#xA;Default value is 0.5 for interpolated streamline method and 0.1 for other methods." required="true" enabled="true" order="1">
                                 <format type="Number" cardinality="1" />
                                 <values>
                                         <value>1</value>
                                 </values>
                         </input>
-                        <output id="spline_filter_0.OUTPUT_TRACK_FILE" name="OUTPUT_TRACK_FILE" description="Enter the output.trk file name." required="true" enabled="true" order="2">
+                        <output id="spline_filter_1.OUTPUT_TRACK_FILE" name="OUTPUT_TRACK_FILE" description="Enter the output.trk file name." required="true" enabled="true" order="2">
                                 <format type="File" cardinality="1">
                                         <fileTypes>
                                                 <filetype name="File" extension="" description="Any type of data file" />
@@ -336,25 +339,25 @@ PMID: 15501092</citation>
                                 </format>
                         </output>
                 </module>
-                <module id="dti_tracker_0" name="dti_tracker" package="Diffusion Tool Kit" version="0.2.1" description="Perform fiber tracking from the reconstructed tensor and maps by dti_recon and output a track file for TrackVis." location="pipeline://cranium.loni.ucla.edu//ifshome/jcolby/bin/dtk-0.6_64bit/dti_tracker" sourceCode="" icon="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&#xA;Xr9Ff//Z" posX="446" posY="761">
+                <module id="dti_tracker_1" name="dti_tracker" package="Diffusion Tool Kit" version="0.2.1" description="Perform fiber tracking from the reconstructed tensor and maps by dti_recon and output a track file for TrackVis." location="pipeline://cranium.loni.ucla.edu//ifshome/jcolby/bin/dtk-0.6_64bit/dti_tracker" sourceCode="" icon="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&#xA;Xr9Ff//Z" posX="446" posY="761">
                         <uri>http://www.trackvis.org/dtk</uri>
                         <metadata>
                                 <data key="__creationDateKey" value="Mon Oct 05 11:41:41 PDT 2009" />
                         </metadata>
-                        <input id="dti_tracker_0.INPUT_DATA_PREFIX" name="INPUT_DATA_PREFIX" description="Enter the input data prefix name." required="true" enabled="true" order="1">
+                        <input id="dti_tracker_1.INPUT_DATA_PREFIX" name="INPUT_DATA_PREFIX" description="Enter the input data prefix name." required="true" enabled="true" order="1">
                                 <format type="String" cardinality="1" />
                                 <values>
                                         <value>pipeline://cranium.loni.ucla.edu/{exptDir}/PIPELINE/dtk.list</value>
                                 </values>
                         </input>
-                        <output id="dti_tracker_0.OUTPUT_FILE" name="OUTPUT_FILE" description="Enter the output file prefix.&#xA;" required="true" enabled="true" order="2">
+                        <output id="dti_tracker_1.OUTPUT_FILE" name="OUTPUT_FILE" description="Enter the output file prefix.&#xA;" required="true" enabled="true" order="2">
                                 <format type="File" cardinality="1">
                                         <fileTypes>
                                                 <filetype name="File" extension="" description="Any type of data file" />
                                         </fileTypes>
                                 </format>
                         </output>
-                        <input id="dti_tracker_0.input_type" name="input_type" description="Input and output file type. Accepted values are: &#xA;             analyze -&gt; analyze format 7.5 (NOT recommended)&#xA;             ni1     -&gt; nifti format saved in seperate .hdr and .img file&#xA;             nii     -&gt; nifti format with one .nii file (default)&#xA;             nii.gz  -&gt; nifti format with compression&#xA;&#xA;Default type is 'nii'&#xA;" required="false" enabled="true" order="3" switch="-it" switchSpaced="true">
+                        <input id="dti_tracker_1.input_type" name="input_type" description="Input and output file type. Accepted values are: &#xA;             analyze -&gt; analyze format 7.5 (NOT recommended)&#xA;             ni1     -&gt; nifti format saved in seperate .hdr and .img file&#xA;             nii     -&gt; nifti format with one .nii file (default)&#xA;             nii.gz  -&gt; nifti format with compression&#xA;&#xA;Default type is 'nii'&#xA;" required="false" enabled="true" order="3" switch="-it" switchSpaced="true">
                                 <format type="Enumerated" cardinality="1">
                                         <enumeration>nii</enumeration>
                                         <enumeration>nii.gz</enumeration>
@@ -363,101 +366,101 @@ PMID: 15501092</citation>
                                         <value>nii.gz</value>
                                 </values>
                         </input>
-                        <input id="dti_tracker_0.image_info" name="image_info" description="Specify image information file. The image info file is generated from original dicom image by diff_unpack program and contains image orientation and other information needed for reconstruction and tracking. By default will look into the image folder for .info file.&#xA;NOTE: if info file was not found or given, the following '-iop', '-sag', '-cor', '-axial' will be used.&#xA;" required="false" enabled="false" order="25" switch="-info" switchSpaced="true">
+                        <input id="dti_tracker_1.image_info" name="image_info" description="Specify image information file. The image info file is generated from original dicom image by diff_unpack program and contains image orientation and other information needed for reconstruction and tracking. By default will look into the image folder for .info file.&#xA;NOTE: if info file was not found or given, the following '-iop', '-sag', '-cor', '-axial' will be used.&#xA;" required="false" enabled="false" order="25" switch="-info" switchSpaced="true">
                                 <format type="File" cardinality="1">
                                         <fileTypes>
                                                 <filetype name="File" extension="" description="Any type of data file" />
                                         </fileTypes>
                                 </format>
                         </input>
-                        <input id="dti_tracker_0.image_orientation_patient" name="image_orientation_patient" description="Specify image orientation vectors. Specify either a filename or 6 numerical value.&#xA;&#xA;If just one argument given, will treat it as filename and read the orientation vectors from the file. If 6 arguments are given, will treat them as 6 float numbers and construct the 1st and 2nd vector and calculate the 3rd one automatically. This information will be used to determine image orientation, as well as to adjust gradient vectors with oblique angle when '-oc' flag is on.&#xA;&#xA;Default use the identity matrix vectors&#xA;" required="false" enabled="false" order="26" switch="-iop" switchSpaced="true">
+                        <input id="dti_tracker_1.image_orientation_patient" name="image_orientation_patient" description="Specify image orientation vectors. Specify either a filename or 6 numerical value.&#xA;&#xA;If just one argument given, will treat it as filename and read the orientation vectors from the file. If 6 arguments are given, will treat them as 6 float numbers and construct the 1st and 2nd vector and calculate the 3rd one automatically. This information will be used to determine image orientation, as well as to adjust gradient vectors with oblique angle when '-oc' flag is on.&#xA;&#xA;Default use the identity matrix vectors&#xA;" required="false" enabled="false" order="26" switch="-iop" switchSpaced="true">
                                 <format type="File" cardinality="-1">
                                         <fileTypes>
                                                 <filetype name="File" extension="" description="Any type of data file" />
                                         </fileTypes>
                                 </format>
                         </input>
-                        <input id="dti_tracker_0.help" name="help" description="Display Help" required="false" enabled="false" order="29" switch="-h" switchSpaced="true">
+                        <input id="dti_tracker_1.help" name="help" description="Display Help" required="false" enabled="false" order="29" switch="-h" switchSpaced="true">
                                 <format type="String" cardinality="0" />
                         </input>
-                        <input id="dti_tracker_0.runge_kutta2" name="runge_kutta2" description="Use 2nd order runge-kutta method for tracking." required="false" enabled="false" order="5" switch="-rk2" switchSpaced="true">
+                        <input id="dti_tracker_1.runge_kutta2" name="runge_kutta2" description="Use 2nd order runge-kutta method for tracking." required="false" enabled="false" order="5" switch="-rk2" switchSpaced="true">
                                 <format type="String" cardinality="0" />
                         </input>
-                        <input id="dti_tracker_0.tensor_line" name="tensor_line" description="Use tensor line method for tracking." required="false" enabled="false" order="6" switch="-tl" switchSpaced="true">
+                        <input id="dti_tracker_1.tensor_line" name="tensor_line" description="Use tensor line method for tracking." required="false" enabled="false" order="6" switch="-tl" switchSpaced="true">
                                 <format type="String" cardinality="0" />
                         </input>
-                        <input id="dti_tracker_0.stream_line" name="stream_line" description="Use interpolated steamline method with fixed step-length." required="false" enabled="false" order="7" switch="-sl" switchSpaced="true">
+                        <input id="dti_tracker_1.stream_line" name="stream_line" description="Use interpolated steamline method with fixed step-length." required="false" enabled="false" order="7" switch="-sl" switchSpaced="true">
                                 <format type="String" cardinality="0" />
                         </input>
-                        <input id="dti_tracker_0.step_length" name="step_length" description="Set step length, in the unit of minimum voxel size.&#xA;Default value is 0.5 for interpolated streamline method and 0.1 for other methods.&#xA;" required="false" enabled="false" order="8" switch="-l" switchSpaced="true">
+                        <input id="dti_tracker_1.step_length" name="step_length" description="Set step length, in the unit of minimum voxel size.&#xA;Default value is 0.5 for interpolated streamline method and 0.1 for other methods.&#xA;" required="false" enabled="false" order="8" switch="-l" switchSpaced="true">
                                 <format type="Number" cardinality="1" />
                         </input>
-                        <input id="dti_tracker_0.angle_threshold" name="angle_threshold" description="Set angle threshold. Default is 35 degree." required="false" enabled="true" order="9" switch="-at" switchSpaced="true">
+                        <input id="dti_tracker_1.angle_threshold" name="angle_threshold" description="Set angle threshold. Default is 35 degree." required="false" enabled="true" order="9" switch="-at" switchSpaced="true">
                                 <format type="Number" cardinality="1" />
                                 <values>
                                         <value>60</value>
                                 </values>
                         </input>
-                        <input id="dti_tracker_0.random_seed" name="random_seed" description="Use random location in a voxel instead of the center of the voxel to seed. Can also define number of seed per voxel. Default is 1&#xA;" required="false" enabled="false" order="11" switch="-rseed" switchSpaced="true">
+                        <input id="dti_tracker_1.random_seed" name="random_seed" description="Use random location in a voxel instead of the center of the voxel to seed. Can also define number of seed per voxel. Default is 1&#xA;" required="false" enabled="false" order="11" switch="-rseed" switchSpaced="true">
                                 <format type="Number" cardinality="1" />
                         </input>
-                        <input id="dti_tracker_0.invert_x" name="invert_x" description="Invert x component of the vector." required="false" enabled="false" order="12" switch="-ix" switchSpaced="true">
+                        <input id="dti_tracker_1.invert_x" name="invert_x" description="Invert x component of the vector." required="false" enabled="false" order="12" switch="-ix" switchSpaced="true">
                                 <format type="String" cardinality="0" />
                         </input>
-                        <input id="dti_tracker_0.invert_y" name="invert_y" description="Invert y component of the vector." required="false" enabled="false" order="13" switch="-iy" switchSpaced="true">
+                        <input id="dti_tracker_1.invert_y" name="invert_y" description="Invert y component of the vector." required="false" enabled="false" order="13" switch="-iy" switchSpaced="true">
                                 <format type="String" cardinality="0" />
                         </input>
-                        <input id="dti_tracker_0.invert_z" name="invert_z" description="Invert z component of the vector." required="false" enabled="false" order="14" switch="-iz" switchSpaced="true">
+                        <input id="dti_tracker_1.invert_z" name="invert_z" description="Invert z component of the vector." required="false" enabled="false" order="14" switch="-iz" switchSpaced="true">
                                 <format type="String" cardinality="0" />
                         </input>
-                        <input id="dti_tracker_0.swapxy" name="swapxy" description="Swap x &amp; y vectors while tracking" required="false" enabled="false" order="15" switch="-sxy" switchSpaced="true">
+                        <input id="dti_tracker_1.swapxy" name="swapxy" description="Swap x &amp; y vectors while tracking" required="false" enabled="false" order="15" switch="-sxy" switchSpaced="true">
                                 <format type="String" cardinality="0" />
                         </input>
-                        <input id="dti_tracker_0.swapyz" name="swapyz" description="Swap y &amp; z vectors while tracking" required="false" enabled="false" order="16" switch="-syz" switchSpaced="true">
+                        <input id="dti_tracker_1.swapyz" name="swapyz" description="Swap y &amp; z vectors while tracking" required="false" enabled="false" order="16" switch="-syz" switchSpaced="true">
                                 <format type="String" cardinality="0" />
                         </input>
-                        <input id="dti_tracker_0.angle_threshold_weight" name="angle_threshold_weight" description="Set angle threshold weighting factor. Weighting will be be applied on top of the angle_threshold.&#xA;" required="false" enabled="false" order="10" switch="-atw" switchSpaced="true">
+                        <input id="dti_tracker_1.angle_threshold_weight" name="angle_threshold_weight" description="Set angle threshold weighting factor. Weighting will be be applied on top of the angle_threshold.&#xA;" required="false" enabled="false" order="10" switch="-atw" switchSpaced="true">
                                 <format type="File" cardinality="1">
                                         <fileTypes>
                                                 <filetype name="File" extension="" description="Any type of data file" />
                                         </fileTypes>
                                 </format>
                         </input>
-                        <input id="dti_tracker_0.fact" name="fact" description="Use FACT method for tracking. this is the default method." required="false" enabled="false" order="4" switch="-fact" switchSpaced="true">
+                        <input id="dti_tracker_1.fact" name="fact" description="Use FACT method for tracking. this is the default method." required="false" enabled="false" order="4" switch="-fact" switchSpaced="true">
                                 <format type="String" cardinality="0" />
                         </input>
-                        <input id="dti_tracker_0.swapzx" name="swapzx" description="Swap z &amp; x vectors while tracking" required="false" enabled="false" order="17" switch="-szx" switchSpaced="true">
+                        <input id="dti_tracker_1.swapzx" name="swapzx" description="Swap z &amp; x vectors while tracking" required="false" enabled="false" order="17" switch="-szx" switchSpaced="true">
                                 <format type="String" cardinality="1" />
                         </input>
-                        <input id="dti_tracker_0.masklowthreshold" name="mask low threshold" description="Set the low Threshold." required="false" enabled="true" order="19">
+                        <input id="dti_tracker_1.masklowthreshold" name="mask low threshold" description="Set the low Threshold." required="false" enabled="true" order="19">
                                 <format type="Number" cardinality="1" />
                                 <values>
                                         <value>0.15</value>
                                 </values>
                         </input>
-                        <input id="dti_tracker_0.maskhighthreshold" name="mask high threshold" description="Set the highthreshold" required="false" enabled="false" order="20">
+                        <input id="dti_tracker_1.maskhighthreshold" name="mask high threshold" description="Set the highthreshold" required="false" enabled="false" order="20">
                                 <format type="Number" cardinality="1" />
                         </input>
-                        <input id="dti_tracker_0.maskfile" name="mask file" description="Specify the mask file." required="false" enabled="true" order="18" switch="-m" switchSpaced="true">
+                        <input id="dti_tracker_1.maskfile" name="mask file" description="Specify the mask file." required="false" enabled="true" order="18" switch="-m" switchSpaced="true">
                                 <format type="String" cardinality="1" />
                                 <values>
                                         <value>pipeline://cranium.loni.ucla.edu/{exptDir}/PIPELINE/fa.list</value>
                                 </values>
                         </input>
-                        <input id="dti_tracker_0.mask2lowthreshold" name="mask2 low threshold" description="Specify the low threshold for mask 2." required="false" enabled="false" order="22" switch="-m2" switchSpaced="true">
+                        <input id="dti_tracker_1.mask2lowthreshold" name="mask2 low threshold" description="Specify the low threshold for mask 2." required="false" enabled="false" order="22" switch="-m2" switchSpaced="true">
                                 <format type="Number" cardinality="1" />
                         </input>
-                        <input id="dti_tracker_0.mask2highthreshold" name="mask2 high threshold" description="Specify the high threshold for mask 2." required="false" enabled="false" order="23" switch="-m2" switchSpaced="true">
+                        <input id="dti_tracker_1.mask2highthreshold" name="mask2 high threshold" description="Specify the high threshold for mask 2." required="false" enabled="false" order="23" switch="-m2" switchSpaced="true">
                                 <format type="Number" cardinality="1" />
                         </input>
-                        <input id="dti_tracker_0.mask2file" name="mask2 file" description="Specify the mask2 file." required="false" enabled="false" order="21" switch="-m2" switchSpaced="true">
+                        <input id="dti_tracker_1.mask2file" name="mask2 file" description="Specify the mask2 file." required="false" enabled="false" order="21" switch="-m2" switchSpaced="true">
                                 <format type="File" cardinality="1">
                                         <fileTypes>
                                                 <filetype name="File" extension="" description="Any type of data file" />
                                         </fileTypes>
                                 </format>
                         </input>
-                        <input id="dti_tracker_0.output_mask" name="output_mask" description="Output a binary mask file in analyze format&#xA;" required="false" enabled="false" order="24" switch="-om" switchSpaced="true">
+                        <input id="dti_tracker_1.output_mask" name="output_mask" description="Output a binary mask file in analyze format&#xA;" required="false" enabled="false" order="24" switch="-om" switchSpaced="true">
                                 <format type="File" cardinality="1">
                                         <fileTypes>
                                                 <filetype name="Analyze Image" extension="img" description="Analyze Image">
@@ -466,37 +469,38 @@ PMID: 15501092</citation>
                                         </fileTypes>
                                 </format>
                         </input>
-                        <input id="dti_tracker_0.slice_order" name="slice_order" description="Set the slice order. 1 means normal, -1 means reversed. Default value is 1&#xA;NOTE: '-iop' and '-sorder' is used to determine '-vorder' if '-vorder' is not explicitly given.&#xA;" required="false" enabled="false" order="27" switch="-sorder" switchSpaced="true">
+                        <input id="dti_tracker_1.slice_order" name="slice_order" description="Set the slice order. 1 means normal, -1 means reversed. Default value is 1&#xA;NOTE: '-iop' and '-sorder' is used to determine '-vorder' if '-vorder' is not explicitly given.&#xA;" required="false" enabled="false" order="27" switch="-sorder" switchSpaced="true">
                                 <format type="Enumerated" cardinality="1">
                                         <enumeration>1</enumeration>
                                         <enumeration>-1</enumeration>
                                 </format>
                         </input>
-                        <input id="dti_tracker_0.voxel_order" name="voxel_order" description="Specify the voxel order in RL/AP/IS (human brain) reference. Must be 3 letters with no space in between.&#xA;For example, RAS means the voxel row is from L-&gt;R, the column is from P-&gt;A and the slice order is from I-&gt;S. By default voxel order is determined by the image orientation (but NOT guaranteed to be correct because of various standards).&#xA;for example, siemens axial image is LPS, coronal image is LIP and sagittal image is PIL. this information also is NOT needed for tracking but will be saved in the track file and is essential for track display to map onto the right coordinates&#xA;&#xA;NOTE: .info file contains all the information for '-iop', '-sorder'and '-vorder'. so if an .info file exists, it should be used instead of applying '-iop', '-sorder' or '-vorder' manually, unless you want to overwrite what '-info' option provided.&#xA;" required="false" enabled="false" order="28" switch="-vorder" switchSpaced="true">
+                        <input id="dti_tracker_1.voxel_order" name="voxel_order" description="Specify the voxel order in RL/AP/IS (human brain) reference. Must be 3 letters with no space in between.&#xA;For example, RAS means the voxel row is from L-&gt;R, the column is from P-&gt;A and the slice order is from I-&gt;S. By default voxel order is determined by the image orientation (but NOT guaranteed to be correct because of various standards).&#xA;for example, siemens axial image is LPS, coronal image is LIP and sagittal image is PIL. this information also is NOT needed for tracking but will be saved in the track file and is essential for track display to map onto the right coordinates&#xA;&#xA;NOTE: .info file contains all the information for '-iop', '-sorder'and '-vorder'. so if an .info file exists, it should be used instead of applying '-iop', '-sorder' or '-vorder' manually, unless you want to overwrite what '-info' option provided.&#xA;" required="false" enabled="false" order="28" switch="-vorder" switchSpaced="true">
                                 <format type="String" cardinality="3" />
                         </input>
-                        <input id="dti_tracker_0.Flowcontrol" name="Flow control" required="false" enabled="true" order="0">
+                        <input id="dti_tracker_1.Flowcontrol" name="Flow control" required="false" enabled="true" order="0">
                                 <format type="Flow Control" cardinality="1" />
                         </input>
                 </module>
-                <module id="dti_recon_0" name="dti_recon" location="pipeline://cranium.loni.ucla.edu//ifshome/jcolby/bin/wrappers/dti_recon.sh" sourceCode="" posX="383" posY="621">
+                <module id="dti_recon_1" name="dti_recon" location="pipeline://cranium.loni.ucla.edu//path/to/dtk/dti_recon" sourceCode="" icon="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&#xA;Xr9Ff//Z" posX="383" posY="617">
+                        <tag />
                         <metadata>
                                 <data key="__creationDateKey" value="Fri Apr 09 10:29:47 PDT 2010" />
                         </metadata>
-                        <input id="dti_recon_0.Input" name="Input" required="true" enabled="true" order="0">
+                        <input id="dti_recon_1.Input" name="Input" required="true" enabled="true" order="0">
                                 <format type="File" cardinality="1">
                                         <fileTypes>
                                                 <filetype name="File" extension="" description="Any type of data file" />
                                         </fileTypes>
                                 </format>
                         </input>
-                        <input id="dti_recon_0.Outputbasename" name="Output basename" required="true" enabled="true" order="1">
+                        <input id="dti_recon_1.Outputbasename" name="Output basename" required="true" enabled="true" order="1">
                                 <format type="String" cardinality="1" />
                                 <values>
                                         <value>pipeline://cranium.loni.ucla.edu/{exptDir}/PIPELINE/dtk.list</value>
                                 </values>
                         </input>
-                        <input id="dti_recon_0.Gradienttable" name="Gradient table" required="true" enabled="true" order="2" switch="-gm" switchSpaced="true">
+                        <input id="dti_recon_1.Gradienttable" name="Gradient table" required="true" enabled="true" order="2" switch="-gm" switchSpaced="true">
                                 <format type="File" cardinality="1">
                                         <fileTypes>
                                                 <filetype name="File" extension="" description="Any type of data file" />
@@ -506,28 +510,28 @@ PMID: 15501092</citation>
                                         <value>pipeline://cranium.loni.ucla.edu//ifs/edevel/TRIO/DATA_ANALYSES/JC_DTI30/PIPELINE/grad/dtk_siemens_30.txt</value>
                                 </values>
                         </input>
-                        <input id="dti_recon_0.b-value" name="b-value" required="true" enabled="true" order="3" switch="-b" switchSpaced="true">
+                        <input id="dti_recon_1.b-value" name="b-value" required="true" enabled="true" order="3" switch="-b" switchSpaced="true">
                                 <format type="Number" cardinality="1" />
                                 <values>
                                         <value>1000</value>
                                 </values>
                         </input>
-                        <input id="dti_recon_0.b0s" name="b0s" required="true" enabled="true" order="4" switch="-b0" switchSpaced="true">
+                        <input id="dti_recon_1.b0s" name="b0s" required="true" enabled="true" order="4" switch="-b0" switchSpaced="true">
                                 <format type="Number" cardinality="1" />
                                 <values>
                                         <value>1</value>
                                 </values>
                         </input>
-                        <input id="dti_recon_0.Outputtype" name="Output type" required="false" enabled="true" order="6" switch="-ot" switchSpaced="true">
+                        <input id="dti_recon_1.Outputtype" name="Output type" required="false" enabled="true" order="6" switch="-ot" switchSpaced="true">
                                 <format type="String" cardinality="1" />
                                 <values>
                                         <value>nii.gz</value>
                                 </values>
                         </input>
-                        <output id="dti_recon_0.Flowcontrol" name="Flow control" required="false" enabled="true" order="7">
+                        <output id="dti_recon_1.Flowcontrol" name="Flow control" required="false" enabled="true" order="7">
                                 <format type="Flow Control" cardinality="1" />
                         </output>
-                        <input id="dti_recon_0.Orientation" name="Orientation" required="false" enabled="false" order="5" switch="-" switchSpaced="false">
+                        <input id="dti_recon_1.Orientation" name="Orientation" required="false" enabled="false" order="5" switch="-" switchSpaced="false">
                                 <format type="Enumerated" cardinality="1">
                                         <enumeration>axial</enumeration>
                                 </format>
@@ -535,11 +539,11 @@ PMID: 15501092</citation>
                                         <value>axial</value>
                                 </values>
                         </input>
-                        <input id="dti_recon_0.Orientationcorrection" name="Orientation correction" required="false" enabled="true" order="8" switch="-oc" switchSpaced="true">
+                        <input id="dti_recon_1.Orientationcorrection" name="Orientation correction" required="false" enabled="true" order="8" switch="-oc" switchSpaced="true">
                                 <format type="String" cardinality="0" />
                         </input>
                 </module>
-                <dataModule id=".trkoutput_0" name=".trk output" posX="499" posY="1005" type="File" source="false" loopIndex="false" dirDump="false">
+                <dataModule id=".trkoutput_1" name=".trk output" posX="499" posY="1005" type="File" source="false" loopIndex="false" dirDump="false">
                         <fileTypes>
                                 <filetype name="File" extension="" description="Any type of data file" />
                         </fileTypes>
@@ -549,7 +553,7 @@ PMID: 15501092</citation>
                         <values>
                                 <value>pipeline://cranium.loni.ucla.edu/{exptDir}/PIPELINE/dtk2.list</value>
                         </values>
-                        <input id=".trkoutput_0.Input" name="Input" required="true" enabled="true" order="-1">
+                        <input id=".trkoutput_1.Input" name="Input" required="true" enabled="true" order="-1">
                                 <format type="File" cardinality="1">
                                         <fileTypes>
                                                 <filetype name="File" extension="" description="Any type of data file" />
@@ -558,7 +562,7 @@ PMID: 15501092</citation>
                         </input>
                 </dataModule>
                 <variables>
-                        <variable name="exptDir">/ifs/edevel/TRIO/DATA_ANALYSES/JC_DTI30</variable>
+                        <variable name="exptDir">/path/to/exptDir</variable>
                 </variables>
                 <metadata>
                         <data key="__creationDateKey" value="Tue May 04 15:15:18 PDT 2010" />
