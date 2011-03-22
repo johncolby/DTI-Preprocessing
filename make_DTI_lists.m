@@ -9,21 +9,22 @@
 % Notes:
 % 1. To run script from command line: matlab -nodisplay < Trio_DTI_lists.m
 % 2. To clear out a whole area, do something like: rm SUBJECTS/*/1avg/dtifit/*
-% 3. Change 'SUBJECTS' to 'TEST' at line 44 to use a test area
+% 3. Change 'SUBJECTS' to 'TEST' at line 47 to use a test area
 
 % Author: John Colby (johncolby@ucla.edu)
 
 %% Setup
 clear all
 
-exptDir = '/path/to/exptDir/'; % Set experiment directory
-analysisName = '2avg';         % Set the name of the output folder
-nScans = 2;                    % Choose the # of scans to average
+exptDir = '/path/to/exptDir/';  % Set experiment directory
+outName = '2avg';               % Set the name of the output folder
+nScans  = 2;                    % Choose the # of scans to average
+idStr   = '30DIR';              % Specify a string to identify raw DWI series
 
-D       = dir(fullfile(exptDir, 'SUBJECTS/20*'));     % Fetch subject list automatically
+D       = dir(fullfile(exptDir, 'SUBJECTS/20*'));  % Fetch subject list automatically
 subIDs  = str2num(vertcat(D.name));
-% subIDs = 20037;                                     % Also can specify a particular
-% load(fullfile(exptDir, 'SCRIPTS/subIDs.txt'))       % subject or load up a list
+% subIDs = 20037;                                  % Also can specify subjects(s)
+% load(fullfile(exptDir, 'SCRIPTS/subIDs.txt'))    % or load up a list
 
 
 %% Open files for output
@@ -44,10 +45,10 @@ for i=1:length(subIDs) % Loop over subject ID
     
     % Change 'SUBJECTS' to 'TEST' to use a test area
     subDir = fullfile(exptDir, 'SUBJECTS', subStr);
-    analysisDir = fullfile(subDir, analysisName);
+    analysisDir = fullfile(subDir, outName);
     
     % Check to see if there are DTI scans present, and how many
-    D = dir(fullfile(subDir, 'RAW', '*30DIR*.nii.gz'));
+    D = dir(fullfile(subDir, 'RAW', sprintf('*%s*.nii.gz', idStr)));
     
     if length(D)>=nScans
         % Make folders if needed
@@ -57,7 +58,7 @@ for i=1:length(subIDs) % Loop over subject ID
         
         % Only do tensor fitting for subjects who don't have it already
         if isempty(dir(fullfile(analysisDir, 'dtifit/dti*'))) || isempty(dir(fullfile(analysisDir, 'diffusion_toolkit/dti*')))
-            [tmp files] = unix(sprintf('echo `ls %s | head -%d`', fullfile(subDir, '*_DTI_*.nii.gz'), nScans));
+            [tmp files] = unix(sprintf('echo `ls %s | head -%d`', fullfile(subDir, sprintf('*%s*.nii.gz', idStr)), nScans));
             fprintf(inpt, sprintf('%s', files));
             fprintf(dti,  sprintf('%s\n', fullfile(analysisDir, 'dtifit')));
             fprintf(data, sprintf('%s\n', fullfile(analysisDir, 'track/data.nii.gz')));
