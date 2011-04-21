@@ -38,7 +38,10 @@ def makeDirs(analysisDir):
 
 def make_DTI_lists(exptDir, outName, nScans, idStr, subIDs=''):
     # Function to generate Pipeline lists
-
+	
+	# Convert exptDir to full path
+    exptDir = abspath(exptDir)
+	
     # Get full subject list if subIDs is not given
     if not subIDs:
         subIDs = sorted(os.listdir(join(exptDir, 'SUBJECTS')))
