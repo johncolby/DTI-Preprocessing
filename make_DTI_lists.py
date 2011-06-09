@@ -66,7 +66,7 @@ def make_DTI_lists(exptDir, outName, nScans, idStr, subIDs=''):
             analysisDir = join(subDir, outName)
 
             # Check to see if there are DTI scans present, and how many
-            files = glob(join(subDir, 'RAW', '*' + idStr + '*.nii.gz'))
+            files = sorted(glob(join(subDir, 'RAW', '*' + idStr + '*.nii.gz')))
 
             print(str(subject) + '\t'),
 
