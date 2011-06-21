@@ -27,7 +27,7 @@ from glob import *
 
 def makeDirs(analysisDir):
     # Setup output directory structure if needed
-
+    
     if not isdir(join(analysisDir, 'dtifit')):
         os.makedirs(join(analysisDir, 'dtifit'))
     if not isdir(join(analysisDir, 'track')):
@@ -35,17 +35,16 @@ def makeDirs(analysisDir):
     if not isdir(join(analysisDir, 'diffusion_toolkit')):
         os.makedirs(join(analysisDir, 'diffusion_toolkit'))
 
-
 def make_DTI_lists(exptDir, outName, nScans, idStr, subIDs=''):
     # Function to generate Pipeline lists
-	
-	# Convert exptDir to full path
+    
+    # Convert exptDir to full path
     exptDir = abspath(exptDir)
-	
+    
     # Get full subject list if subIDs is not given
     if not subIDs:
         subIDs = sorted(os.listdir(join(exptDir, 'SUBJECTS')))
-
+    
     # Open files for output
     with open(join(exptDir, 'PIPELINE', 'inpt.list'), 'w') as inpt,\
          open(join(exptDir, 'PIPELINE', 'dti.list'), 'w')  as dti,\
@@ -57,22 +56,22 @@ def make_DTI_lists(exptDir, outName, nScans, idStr, subIDs=''):
          open(join(exptDir, 'PIPELINE', 'dtk.list'), 'w')  as dtk,\
          open(join(exptDir, 'PIPELINE', 'dtk2.list'), 'w') as dtk2,\
          open(join(exptDir, 'PIPELINE', 'fa.list'), 'w')   as fa:
-
+         
         # Loop over subject ID
         for subject in subIDs:
-
+            
             # Change 'SUBJECTS' to 'TEST' to use a test area
             subDir      = join(exptDir, 'SUBJECTS', subject)
             analysisDir = join(subDir, outName)
-
+            
             # Check to see if there are DTI scans present, and how many
             files = sorted(glob(join(subDir, 'RAW', '*' + idStr + '*.nii.gz')))
-
+            
             print(str(subject) + '\t'),
-
-            if len(files) > nScans:
+            
+            if len(files) >= nScans:
                 makeDirs(analysisDir)
-
+                
                 # Only set up tensor fitting to run for subjects who don't have
                 # files already
                 if not (glob(join(analysisDir, 'dtifit/dti*')) or\
@@ -87,9 +86,9 @@ def make_DTI_lists(exptDir, outName, nScans, idStr, subIDs=''):
                     print >> dtk,  join(analysisDir, 'diffusion_toolkit', 'dti')
                     print >> dtk2, join(analysisDir, 'diffusion_toolkit', 'dti.trk')
                     print >> fa,   join(analysisDir, 'diffusion_toolkit', 'dti_fa.nii.gz')
-
+                    
                     print('OK\t'),
-
+                    
                     # Make links to the correct bvals/bvecs in the track folder
                     # for bedpostx
                     try:
